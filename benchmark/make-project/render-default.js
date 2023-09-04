@@ -62,11 +62,11 @@ ${Array.from({ length: 1000 })
  */
 export async function run(projectDir) {
 	await fs.rm(projectDir, { recursive: true, force: true });
-	await fs.mkdir(new URL('./src/pages', projectDir), { recursive: true });
+	await fs.mkdir(new URL('./src/views', projectDir), { recursive: true });
 
 	await Promise.all(
 		Object.entries(renderFiles).map(([name, content]) => {
-			return fs.writeFile(new URL(`./src/pages/${name}`, projectDir), content, 'utf-8');
+			return fs.writeFile(new URL(`./src/views/${name}`, projectDir), content, 'utf-8');
 		})
 	);
 
